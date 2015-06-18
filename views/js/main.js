@@ -426,6 +426,7 @@ var resizePizzas = function(size) {
 
   // Iterates through pizza elements on the page and changes their widths
   function changePizzaSizes(size) {
+    var newWidth = 0;
     switch(size) {
       case "1":
         newWidth = 25;
@@ -500,7 +501,7 @@ function updatePositions() {
   }
 
   for (var i = 0; i < items.length; i++) {
-    items[i].style.transform = 'translateX(' + (100 * phases[i % 5] * 5) + 'px)';
+    items[i].style.transform = 'translateX(' + 100 * phases[i % 5] + 'px)';
   }
 
   // User Timing API to the rescue again. Seriously, it's worth learning.
@@ -536,6 +537,7 @@ document.addEventListener('DOMContentLoaded', function() {
       elem.style.height = "100px";
       elem.style.width = "73.333px";
       elem.basicLeft = c * size;
+      elem.style.left = (c % cols) * size + 'px';
       top = r * size;
       elem.style.top = top + 'px';
       document.getElementById("movingPizzas1").appendChild(elem);
