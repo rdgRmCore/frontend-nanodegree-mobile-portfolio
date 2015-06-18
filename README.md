@@ -42,6 +42,15 @@ You might find the FPS Counter/HUD Display useful in Chrome developer tools desc
 The function updatePositions was causing a synchronous layout. I moved the 
 read of the document.body.scrollTop out of the for loop. 
 
+Pre calculate values for phases.
+
+Use getElementsByClassName as a selector.
+
+Use transform translateX instead of basicLeft.
+
+Only draw as many background pizzas as needed.
+
+
 #### Resize Pizzas
 Create a randomPizzas variable to avoid repeating the querySelectorAll.
 
