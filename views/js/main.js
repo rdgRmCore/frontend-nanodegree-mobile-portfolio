@@ -514,17 +514,23 @@ window.addEventListener('scroll', updatePositions);
 
 // Generates the sliding pizzas when the page loads.
 document.addEventListener('DOMContentLoaded', function() {
-  var cols = 8;
+  var cols = Math.floor(window.innerWidth / 256) + 1;
+  var rows = Math.floor(window.innerHeight / 256) + 1;
   var s = 256;
-  for (var i = 0; i < 200; i++) {
-    var elem = document.createElement('img');
-    elem.className = 'mover';
-    elem.src = "images/pizza.png";
-    elem.style.height = "100px";
-    elem.style.width = "73.333px";
-    elem.basicLeft = (i % cols) * s;
-    elem.style.top = (Math.floor(i / cols) * s) + 'px';
-    document.querySelector("#movingPizzas1").appendChild(elem);
+  var top = 0;
+  for (var r = 0; r < rows; r++){
+    for (var c = 0; c < cols; c++){
+      var elem = document.createElement('img');
+      elem.className = 'mover';
+      elem.src = "images/pizza.png";
+      elem.style.height = "100px";
+      elem.style.width = "73.333px";
+      elem.basicLeft = c * 256;
+      top = r * 256;
+      elem.style.top = top + 'px';
+      document.querySelector("#movingPizzas1").appendChild(elem);
+    }
   }
+
   updatePositions();
 });
