@@ -440,8 +440,9 @@ var resizePizzas = function(size) {
         console.log("bug in sizeSwitcher");
         break;
     }
-    var randomPizzas = document.querySelectorAll(".randomPizzaContainer");
-    for (var i = 0; i < randomPizzas.length; i++) {
+    var randomPizzas = document.getElementsByClassName("randomPizzaContainer");
+    var len = randomPizzas.length;
+    for (var i = 0; i < len; i++) {
       randomPizzas[i].style.width = newWidth + "%";
     }
   }
@@ -458,8 +459,8 @@ var resizePizzas = function(size) {
 window.performance.mark("mark_start_generating"); // collect timing data
 
 // This for-loop actually creates and appends all of the pizzas when the page loads
+var pizzasDiv = document.getElementById("randomPizzas");
 for (var i = 2; i < 100; i++) {
-  var pizzasDiv = document.getElementById("randomPizzas");
   pizzasDiv.appendChild(pizzaElementGenerator(i));
 }
 
@@ -517,21 +518,27 @@ window.addEventListener('scroll', updatePositions);
 
 // Generates the sliding pizzas when the page loads.
 document.addEventListener('DOMContentLoaded', function() {
-  var cols = Math.floor(window.innerWidth / 256) + 1;
-  var rows = Math.floor(window.innerHeight / 256) + 1;
-  var s = 256;
-  var top = 0;
+  var size = 256; //the col and row size
+ 
+  //Calculate the number of visible columns and rows
+  var cols = Math.floor(window.innerWidth / size) + 1;
+  var rows = Math.floor(window.innerHeight / size) + 1;
+
+  var top = 0; //the pixel location for elem.style.top
+  var elem; //a background pizza element
+
+  //Loop over the rows and columns
   for (var r = 0; r < rows; r++){
     for (var c = 0; c < cols; c++){
-      var elem = document.createElement('img');
+      elem = document.createElement('img');
       elem.className = 'mover';
       elem.src = "images/pizza.png";
       elem.style.height = "100px";
       elem.style.width = "73.333px";
-      elem.basicLeft = c * 256;
-      top = r * 256;
+      elem.basicLeft = c * size;
+      top = r * size;
       elem.style.top = top + 'px';
-      document.querySelector("#movingPizzas1").appendChild(elem);
+      document.getElementById("movingPizzas1").appendChild(elem);
     }
   }
 
