@@ -24,6 +24,8 @@ Some useful tips to help you get started:
 
 Profile, optimize, measure... and then lather, rinse, and repeat. Good luck!
 
+Be sure to run index.html
+
 ### Optimizations Performed
 
 #### Scrolling
