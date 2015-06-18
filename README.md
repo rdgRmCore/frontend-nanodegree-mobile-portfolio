@@ -6,9 +6,7 @@ This site is on git hub pages.
 
 1. Visit the url:
 
-http://rdgrmcore.github.io/frontend-nanodegree-mobile-portfolio/
-
-Be sure to run index.html
+http://rdgrmcore.github.io/frontend-nanodegree-mobile-portfolio/index.html
 
 ### Optimizations Performed
 
